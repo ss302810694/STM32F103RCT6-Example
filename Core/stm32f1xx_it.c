@@ -148,22 +148,24 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f1xx.s).                                               */
 /******************************************************************************/
 
-/**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
-  */
-/*void PPP_IRQHandler(void)
+void TIM2_IRQHandler(void)
 {
-}*/
+    static int duty = 0;
+    static int inc = 1;
+    
+    HAL_TIM_IRQHandler(&timer2.TIM_Handle);
+    
+    duty += inc;
+    if((duty >= 100) || (duty <= 0))
+    {
+        inc = -inc;
+    }
+
+    TimerSetPulse(&timer1, TIM_CHANNEL_1, duty / 100.0);
+}
 
 
-/**
-  * @}
-  */ 
 
-/**
-  * @}
-  */
+
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
