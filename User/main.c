@@ -2,10 +2,14 @@
 
 int main()
 {
-    HAL_Init();
-
-    while (1)
-    {
-        HAL_Delay(10);
-    }
+	HAL_Init();
+    SystemClockInit();
+    GPIOInit();
+    UARTInit();
+    
+	while(1)
+	{
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
+        HAL_Delay(500);
+	}
 }

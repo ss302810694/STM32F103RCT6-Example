@@ -5,10 +5,10 @@
 extern "C" {
 #endif
 
-#include "stm32f1xx_hal.h"
+#include "common.h"
 
 
-void SystemClockInit(void);
+int SystemClockInit(void);
 
 
 

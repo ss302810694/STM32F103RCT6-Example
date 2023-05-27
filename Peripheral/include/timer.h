@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#include "stm32f1xx_hal.h"
+#include "common.h"
 
 
 typedef struct TimerDef
@@ -16,14 +16,12 @@ typedef struct TimerDef
 }TimerDef;
 
 
+int TimerInit();
+int TimerStartIT(TimerDef *htim);
+int TimerSetPulse(TimerDef *htim, int a);
 
-int TimerInit(void);
+extern TimerDef Timer1;
 
-
-int TimerSetPulse(TimerDef *handle, uint32_t channel, float duty);
-
-
-extern TimerDef timer1, timer2;
 
 #ifdef __cplusplus
 }
